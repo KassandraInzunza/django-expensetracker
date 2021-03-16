@@ -1,0 +1,37 @@
+{%  load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Expense</title>
+</head>
+<body>
+
+    <form action= "{% url 'main-expense-create' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="hidden" id="member_id" name="member_id" value="1234" />
+        <div class="form-horizantal">
+            <div class="form-group row">
+                <label class="col-md-12" for="date">Date {% now "SHORT_DATETIME_FORMAT" %}</label>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2" for="category">Enter category:</label>
+                <input type="text" id="category" name="category" value="exp">
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2" for="description">Enter description:</label>
+                <input type="text" id="description" name="description" value=" ">
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2" for="amount">Enter expense:</label>
+                <input type="text" id="amount" name="amount" value=" ">
+            </div>
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+
+</body>
+</html>
